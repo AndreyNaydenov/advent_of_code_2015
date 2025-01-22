@@ -1,0 +1,4 @@
+.zig-cache
+input.txt
+example*.txt
+zig-out
