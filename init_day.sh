@@ -1,4 +1,5 @@
 #!/bin/bash
+#set -x # uncomment for debug
 
 # take one arg (day number)
 # create directory inside src/ with name day<daynum>
@@ -12,6 +13,10 @@ if [ -z "$1" ] || [ ${#1} -gt 2 ] || ! [ "$1" -eq "$1" ] 2>/dev/null; then
     day_number: number from 1 to 25"
   exit 1
 fi
+
+# cd to script directory if script is called from other place
+SCRIPT_DIR=$(dirname "$(realpath "$BASH_SOURCE")")
+cd $SCRIPT_DIR
 
 formatted_num=$(printf "%02d" "$1")
 
