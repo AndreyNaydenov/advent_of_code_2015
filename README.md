@@ -1,9 +1,9 @@
 # Advent of Code 2015 in Zig
 
 ## Usage:
-1. Use init_day.sh to init solution directory in src/
-2. Put your task input to src/dayXX/input.txt
-3. Write your code solutions in src/dayXX/main.zig
+1. Use init_day.sh to init solution directory in `src/`
+2. Put your task input to `src/dayXX/input.txt`
+3. Write your code solutions in `src/dayXX/main.zig`
 4. Build and run (see [Build](#build))
 
 ## Build:
