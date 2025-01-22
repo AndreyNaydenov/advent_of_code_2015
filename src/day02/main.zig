@@ -1,6 +1,7 @@
 const std = @import("std");
 const print = std.debug.print;
 const input = @embedFile("input.txt");
+const dayinfo = @embedFile("dayinfo");
 
 const Present = struct {
     dimensions: [3]u32,
@@ -50,6 +51,7 @@ const Present = struct {
 };
 
 pub fn main() !void {
+    print("Running solution for {s}\n", .{dayinfo});
     const num_of_lines = comptime blk: {
         @setEvalBranchQuota(100_000);
         var count: usize = 0;

@@ -1,8 +1,10 @@
 const std = @import("std");
 const print = std.debug.print;
 const input = @embedFile("input.txt");
+const dayinfo = @embedFile("dayinfo");
 
 pub fn main() void {
+    print("Running solution for {s}\n", .{dayinfo});
     part1();
     part2();
 }

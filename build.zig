@@ -7,8 +7,6 @@ pub fn build(b: *std.Build) !void {
     const run_step = b.step("run", "Run the app");
 
     for (try findSolutions(b.allocator, "src/")) |solution| {
-        //std.debug.print("S path: {s}\n", .{solution});
-
         const exe_mod = b.createModule(.{
             .root_source_file = b.path(solution),
             .target = target,
@@ -20,6 +18,13 @@ pub fn build(b: *std.Build) !void {
         const exe = b.addExecutable(.{
             .name = exe_name,
             .root_module = exe_mod,
+        });
+
+        // add info about day number to each solution
+        const wf = b.addWriteFiles();
+        const output = wf.add("dayinfo", exe_name);
+        exe.root_module.addAnonymousImport("dayinfo", .{
+            .root_source_file = output,
         });
 
         b.installArtifact(exe);
