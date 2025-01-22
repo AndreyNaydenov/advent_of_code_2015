@@ -7,7 +7,7 @@ pub fn build(b: *std.Build) !void {
     const run_step = b.step("run", "Run the app");
 
     for (try findSolutions(b.allocator, "src/")) |solution| {
-        std.debug.print("S path: {s}\n", .{solution});
+        //std.debug.print("S path: {s}\n", .{solution});
 
         const exe_mod = b.createModule(.{
             .root_source_file = b.path(solution),
