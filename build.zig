@@ -3,10 +3,32 @@ const std = @import("std");
 pub fn build(b: *std.Build) !void {
     const target = b.standardTargetOptions(.{});
     const optimize = b.standardOptimizeOption(.{});
+    const daynum: ?usize = b.option(usize, "day", "Select day");
 
     const run_step = b.step("run", "Run the app");
 
-    for (try findSolutions(b.allocator, "src/")) |solution| {
+    var solutions: [][]const u8 = undefined;
+    const found_solutions = try findSolutions(b.allocator, "src/");
+    if (daynum) |n| {
+        // check if this solution exists in found_solutions
+        const formatted = try std.fmt.allocPrint(b.allocator, "{d:02}", .{n});
+
+        blk: {
+            for (found_solutions, 0..) |s, i| {
+                const day_index = std.mem.indexOf(u8, s, "day") orelse unreachable;
+                const daynum_index = day_index + "day".len;
+                if (std.mem.eql(u8, formatted, s[daynum_index .. daynum_index + 2])) {
+                    solutions = found_solutions[i .. i + 1];
+                    break :blk;
+                }
+            }
+            @panic("Solution for the specified day wasn't found");
+        }
+    } else {
+        solutions = found_solutions;
+    }
+
+    for (solutions) |solution| {
         const exe_mod = b.createModule(.{
             .root_source_file = b.path(solution),
             .target = target,

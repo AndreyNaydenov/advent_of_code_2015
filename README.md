@@ -15,7 +15,7 @@ Arg `run` can be added, to also run all compiled solutions
 - ~~init_day.sh script to create default day dir layout~~
 - ~~init_day.sh change all path to be relative to script, not cwd~~
 - ~~build.zig that iterates over all day dirs, compiles and runs solutions~~
-- build option `-Dday=<daynum>` to compile and run single day
+- ~~build option `-Dday=<daynum>` to compile and run single day~~
 - ~~day1 solution~~
 - ~~what is the best way to read an input? (I choose @embedFile)~~
 - build option `-Dexample=<examplenum>` that shows that we need to use example input with some number instead of main input
