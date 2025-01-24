@@ -4,11 +4,12 @@
 1. Use init_day.sh to init solution directory in `src/`
 2. Put your task input to `src/dayXX/input.txt`
 3. Write your code solutions in `src/dayXX/main.zig`
-4. Build and run (see [Build](#build))
+4. Build and run (see [Build and run](#build-and-run))
 
-## Build:
-To build all days run ```zig build --summary all```  
+## Build and run:
+- To build all days run ```zig build --summary all```  
 Arg `run` can be added, to also run all compiled solutions
+- To build and run single day use ```zig build -Dday=<day_number> run```
 
 ## TODO:
 
@@ -19,3 +20,4 @@ Arg `run` can be added, to also run all compiled solutions
 - ~~day1 solution~~
 - ~~what is the best way to read an input? (I choose @embedFile)~~
 - build option `-Dexample=<examplenum>` that shows that we need to use example input with some number instead of main input
+- build option `-Dseq` to run solutions sequentially (1,2,3...)
